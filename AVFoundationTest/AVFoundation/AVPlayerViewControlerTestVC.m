@@ -7,8 +7,11 @@
 //
 
 #import "AVPlayerViewControlerTestVC.h"
+#import <AVKit/AVKit.h>
 
 @interface AVPlayerViewControlerTestVC ()
+
+@property (nonatomic, strong) AVPlayerViewController *playerVC;
 
 @end
 
@@ -16,7 +19,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    NSURL *url = [NSURL URLWithString:@"https://ksv-video-publish.cdn.bcebos.com/d30e41c2c3ebe866c8e9ce12749b189153a099c5.mp4?auth_key=1618342584-0-0-a607021f43f236f5be45dae67999cf9f&amp"];
+    
+    AVPlayer *player = [[AVPlayer alloc] initWithURL:url];
+    AVPlayerLayer *layer = [AVPlayerLayer playerLayerWithPlayer:player];
+    layer.videoGravity = AVLayerVideoGravityResizeAspect;
+    layer.frame = CGRectMake(50, 100, 300, 200);
+    
+    self.playerVC = [[AVPlayerViewController alloc] init];
+    self.playerVC.player = player;
+    
+    [self presentViewController:self.playerVC animated:YES completion:nil];
+    
 }
 
 /*

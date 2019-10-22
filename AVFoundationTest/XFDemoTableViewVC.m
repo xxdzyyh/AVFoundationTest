@@ -7,7 +7,6 @@
 //
 
 #import "XFDemoTableViewVC.h"
-#import <Masonry/Masonry.h>
 
 NSString * const ActionTypeString  = @"type";
 NSString * const ActionDescString  = @"desc";
@@ -23,10 +22,7 @@ NSString * const ActionValueString = @"value";
     [super viewDidLoad];
     
     [self.view addSubview:self.tableView];
-    
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
-    }];
+    self.tableView.frame = self.view.bounds;
 }
 
 - (void)setDataSources:(NSArray *)dataSources {
@@ -78,15 +74,8 @@ NSString * const ActionValueString = @"value";
         UIView *view = [NSClassFromString(value) new];
         
         UIViewController *vc = [UIViewController new];
-        
         view.backgroundColor = [UIColor colorWithWhite:0.4 alpha:1];
-        
         [vc.view addSubview:view];
-        
-        [view mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.mas_equalTo(view);
-        }];
-        
     } else {
         
     }

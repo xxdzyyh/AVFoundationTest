@@ -1,5 +1,5 @@
 //
-//  AVPlayTestVC.h
+//  AppDelegate.h
 //  AVFoundationTest
 //
 //  Created by xiaoniu on 10/22/19.
@@ -8,10 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@interface AVPlayerTestVC : UIViewController
 
 @end
 
-NS_ASSUME_NONNULL_END
